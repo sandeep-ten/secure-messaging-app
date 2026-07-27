@@ -1,9 +1,3 @@
-__pycache__/
-
-*.pyc
-
+private_key.pem
 database.db
-
 venv/
-
-.env
