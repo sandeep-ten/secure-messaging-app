@@ -1,3 +1,16 @@
-private_key.pem
-database.db
+# Python
+__pycache__/
+*.pyc
+
+# Virtual Environment
 venv/
+
+# Database
+database.db
+
+# Cryptographic Keys
+private_key.pem
+public_key.pem
+
+# Environment variables
+.env
