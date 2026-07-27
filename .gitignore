@@ -1,16 +1,16 @@
-# Python
-__pycache__/
-*.pyc
-
 # Virtual Environment
 venv/
 
 # Database
 database.db
 
-# Generated Keys
-public_key.pem
-private_key.pem
+# Keys
+keys/private_key.pem
+keys/public_key.pem
+keys/secret.key
 
-# Environment Variables
+# Python
+__pycache__/
+*.pyc
+
 .env

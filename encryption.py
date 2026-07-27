@@ -11,7 +11,7 @@ def generate_keys():
 
     public_key = private_key.public_key()
 
-    with open("private_key.pem", "wb") as f:
+    with open("keys/private_key.pem", "wb") as f:
         f.write(
 
             private_key.private_bytes(
@@ -26,7 +26,7 @@ def generate_keys():
 
         )
 
-    with open("public_key.pem", "wb") as f:
+    with open("keys/public_key.pem", "wb") as f:
 
         f.write(
 

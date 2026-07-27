@@ -1,6 +1,6 @@
 from cryptography.fernet import Fernet
 
-KEY_FILE = "secret.key"
+KEY_FILE = "keys/secret.key"
 
 
 def generate_key():
