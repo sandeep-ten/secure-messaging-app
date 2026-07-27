@@ -8,9 +8,9 @@ venv/
 # Database
 database.db
 
-# Cryptographic Keys
-private_key.pem
+# Generated Keys
 public_key.pem
+private_key.pem
 
-# Environment variables
+# Environment Variables
 .env
