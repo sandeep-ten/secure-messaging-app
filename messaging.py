@@ -1,33 +1,36 @@
 from cryptography.fernet import Fernet
 
+KEY_FILE = "secret.key"
+
 
 def generate_key():
-    return Fernet.generate_key()
+    key = Fernet.generate_key()
+
+    with open(KEY_FILE, "wb") as f:
+        f.write(key)
 
 
-def encrypt_message(key, message):
+def load_key():
+    with open(KEY_FILE, "rb") as f:
+        return f.read()
+
+
+def encrypt(message):
+    key = load_key()
     cipher = Fernet(key)
-    encrypted = cipher.encrypt(message.encode())
-    return encrypted
+
+    return cipher.encrypt(message.encode())
 
 
-def decrypt_message(key, encrypted_message):
+def decrypt(ciphertext):
+    key = load_key()
     cipher = Fernet(key)
-    decrypted = cipher.decrypt(encrypted_message)
-    return decrypted.decode()
+
+    return cipher.decrypt(ciphertext).decode()
 
 
 if __name__ == "__main__":
-    key = generate_key()
 
-    message = input("Enter message: ")
+    generate_key()
 
-    encrypted = encrypt_message(key, message)
-
-    print("\nEncrypted:")
-    print(encrypted)
-
-    decrypted = decrypt_message(key, encrypted)
-
-    print("\nDecrypted:")
-    print(decrypted)
+    print("Secret key generated successfully.")

@@ -1,4 +1,5 @@
 import socket
+from messaging import decrypt, encrypt
 
 HOST = "127.0.0.1"
 PORT = 5000
@@ -14,14 +15,23 @@ client, address = server.accept()
 print(f"Connected by {address}")
 
 while True:
-    data = client.recv(1024)
 
-    if not data:
+    encrypted = client.recv(4096)
+
+    if not encrypted:
         break
 
-    print("Received:", data.decode())
+    print("\nEncrypted message:")
+    print(encrypted)
 
-    client.send(data)
+    plaintext = decrypt(encrypted)
+
+    print("\nDecrypted message:")
+    print(plaintext)
+
+    response = encrypt("Message received successfully.")
+
+    client.send(response)
 
 client.close()
 server.close()

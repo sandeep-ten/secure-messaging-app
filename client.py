@@ -1,4 +1,5 @@
 import socket
+from messaging import encrypt, decrypt
 
 HOST = "127.0.0.1"
 PORT = 5000
@@ -8,10 +9,14 @@ client.connect((HOST, PORT))
 
 message = input("Enter message: ")
 
-client.send(message.encode())
+encrypted = encrypt(message)
 
-reply = client.recv(1024)
+client.send(encrypted)
 
-print("Server:", reply.decode())
+reply = client.recv(4096)
 
-client.close()
+print()
+
+print("Server Reply:")
+
+print(decrypt(reply))
